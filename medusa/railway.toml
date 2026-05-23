@@ -1,9 +1,11 @@
 [build]
 builder = "nixpacks"
-buildCommand = "npm run build && npx medusa db:migrate"
+buildCommand = "npm run build"
 
+# Migrations run at deploy time so DATABASE_URL is fully resolved.
+# Once running, the start command keeps Medusa alive.
 [deploy]
-startCommand = "npm run start"
+startCommand = "npx medusa db:migrate && npm run start"
 healthcheckPath = "/health"
 healthcheckTimeout = 100
 restartPolicyType = "ON_FAILURE"
