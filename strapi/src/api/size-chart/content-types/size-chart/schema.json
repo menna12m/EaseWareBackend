@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "size_charts",
+  "info": {
+    "singularName": "size-chart",
+    "pluralName": "size-charts",
+    "displayName": "Size Chart",
+    "description": "Per-category sizing reference (women / kids)"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "category": {
+      "type": "enumeration",
+      "enum": ["women", "kids"],
+      "required": true,
+      "unique": true
+    },
+    "sizes": {
+      "type": "json"
+    },
+    "how_to_measure": {
+      "type": "blocks"
+    }
+  }
+}

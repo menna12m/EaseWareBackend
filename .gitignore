@@ -1,0 +1,46 @@
+# Dependencies
+node_modules/
+**/node_modules/
+.pnp
+.pnp.js
+
+# Env
+.env
+.env.local
+.env.*.local
+**/.env
+**/.env.local
+**/.env.*.local
+
+# Build output
+dist/
+build/
+.next/
+.medusa/
+**/dist/
+**/build/
+**/.medusa/
+**/.cache/
+**/.tmp/
+
+# Strapi
+strapi/.strapi-updater.json
+strapi/exports/
+strapi/public/uploads/*
+!strapi/public/uploads/.gitkeep
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+logs/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo

@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "persona_stories",
+  "info": {
+    "singularName": "persona-story",
+    "pluralName": "persona-stories",
+    "displayName": "Persona Story",
+    "description": "Editorial stories for each customer persona"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "hero_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "excerpt": {
+      "type": "text",
+      "maxLength": 160
+    },
+    "body": {
+      "type": "blocks"
+    },
+    "product_tags": {
+      "type": "json"
+    },
+    "color_theme": {
+      "type": "string",
+      "regex": "^#([0-9a-fA-F]{3}){1,2}$"
+    }
+  }
+}
