@@ -4,9 +4,13 @@ buildCommand = "npm run build"
 
 # Migrations run at deploy time so DATABASE_URL is fully resolved.
 # Once running, the start command keeps Medusa alive.
+#
+# We bump the healthcheck window to 5 minutes because the first deploy has to
+# run db:migrate + load every module before /health responds. After that,
+# subsequent deploys boot fast and the check returns near-instantly.
 [deploy]
 startCommand = "npx medusa db:migrate && npm run start"
 healthcheckPath = "/health"
-healthcheckTimeout = 100
+healthcheckTimeout = 300
 restartPolicyType = "ON_FAILURE"
-restartPolicyMaxRetries = 5
+restartPolicyMaxRetries = 3
