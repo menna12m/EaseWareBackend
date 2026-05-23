@@ -4,6 +4,7 @@ const PUBLIC_READ_UIDS = [
   "api::policy-page.policy-page",
   "api::fabric-type.fabric-type",
   "api::size-chart.size-chart",
+  "api::home-page.home-page",
 ] as const
 
 /**

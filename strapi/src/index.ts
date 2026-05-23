@@ -3,6 +3,8 @@ import { seedPersonaStories } from "./bootstrap/seed-persona-stories"
 import { seedFaqs } from "./bootstrap/seed-faqs"
 import { seedFabricTypes } from "./bootstrap/seed-fabric-types"
 import { seedSizeCharts } from "./bootstrap/seed-size-charts"
+import { seedHomePage } from "./bootstrap/seed-home-page"
+import { ensureLocales } from "./bootstrap/locales"
 import { grantPublicReadPermissions } from "./bootstrap/permissions"
 
 export default {
@@ -22,6 +24,8 @@ export default {
    * run jobs, or perform some special logic.
    */
   async bootstrap({ strapi }) {
+    // Locales must be registered before any i18n-aware content type is seeded.
+    await ensureLocales(strapi)
     await grantPublicReadPermissions(strapi)
 
     if (process.env.SKIP_SEED === "true") {
@@ -34,5 +38,6 @@ export default {
     await seedFaqs(strapi)
     await seedFabricTypes(strapi)
     await seedSizeCharts(strapi)
+    await seedHomePage(strapi)
   },
 }
