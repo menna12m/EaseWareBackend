@@ -4,13 +4,13 @@
   "description": "Easewear e-commerce backend powered by Medusa v2",
   "main": "index.js",
   "scripts": {
-    "build": "medusa build",
+    "build": "npx medusa build",
     "seed": "medusa exec ./src/scripts/seed.ts",
     "start": "medusa start",
     "dev": "medusa develop",
     "test:unit": "vitest run",
     "db:generate": "medusa db:generate",
-    "db:migrate": "medusa db:migrate"
+    "db:migrate": "npx medusa db:migrate"
   },
   "engines": {
     "node": "20.x"
@@ -23,15 +23,15 @@
     "awilix": "^8.0.1",
     "axios": "^1.7.7",
     "jsonwebtoken": "^9.0.2",
-    "pg": "^8.13.0"
+    "pg": "^8.13.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
   },
   "devDependencies": {
     "@medusajs/test-utils": "^2.4.0",
     "@types/jsonwebtoken": "^9.0.7",
     "@types/node": "^20.17.6",
     "@types/pg": "^8.11.10",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.6.3",
     "vitest": "^2.1.4"
   }
 }
