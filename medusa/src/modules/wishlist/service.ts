@@ -10,10 +10,19 @@ class WishlistModuleService extends MedusaService({
 
     // model.json() types the field as Record<string, unknown> but we store an
     // array. JSONB accepts either at runtime; cast to silence the TS overload.
-    return this.createWishlists({
-      customer_id: customerId,
-      product_ids: [] as unknown as Record<string, unknown>,
-    })
+    try {
+      return await this.createWishlists({
+        customer_id: customerId,
+        product_ids: [] as unknown as Record<string, unknown>,
+      })
+    } catch (err) {
+      // Race condition: another concurrent request inserted the row a
+      // moment before us, tripping the unique(customer_id) constraint.
+      // Re-fetch and return that row — the create was effectively a no-op.
+      const [row] = await this.listWishlists({ customer_id: customerId })
+      if (row) return row
+      throw err
+    }
   }
 
   async toggleProduct(
