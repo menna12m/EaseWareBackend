@@ -13,7 +13,7 @@
     "db:migrate": "medusa db:migrate"
   },
   "engines": {
-    "node": ">=20"
+    "node": "20.x"
   },
   "dependencies": {
     "@medusajs/admin-sdk": "^2.4.0",
